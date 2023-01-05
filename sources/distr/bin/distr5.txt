@@ -1,0 +1,6 @@
+clean;
+
+load 'shapes/Crops.shp' as Crops;
+load 'shapes/Rivers.shp' as Rivers;
+
+select from Crops hj join Rivers(Crops);

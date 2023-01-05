@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Main-Class: dgeo.vs.spark.queries.M8_PR_AW_ED
+

@@ -1,0 +1,31 @@
+clean;
+
+load 'shapes/Rivers.shp' as Rivers;
+load 'shapes/Railroads.shp' as Railroads;
+load 'shapes/elevcontour.shp' as elevcontour;
+load 'shapes/rodovia.shp' as rodovia;
+
+cleani;
+select from Rivers hj join Railroads(Rivers) hj join elevcontour(Rivers) hj join rodovia(Rivers);
+system "./charts/gen_resource_usage.sh Q7P1";
+
+#cleani;
+#select from Rivers hj join elevcontour(Rivers) hj join Railroads(alerta) hj join rodovia(Rivers);
+#system "./charts/gen_resource_usage.sh Q7P2";
+
+#cleani;
+#select from Rivers hj join elevcontour(Rivers) hj join rodovia(Rivers) hj join Railroads(Rivers);
+#system "./charts/gen_resource_usage.sh Q7P3";
+
+#cleani;
+#select from rodovia hj join Rivers(rodovia) hj join elevcontour(Rivers) hj join Railroads(Rivers);
+#system "./charts/gen_resource_usage.sh Q7P4";
+
+#cleani;
+#select from rodovia hj join Rivers(rodovia) hj join Railroads(Rivers) hj join elevcontour(Rivers);
+#system "./charts/gen_resource_usage.sh Q7P5";
+
+#cleani;
+#select from Railroads hj join Rivers(Railroads) hj join rodovia(Rivers) hj join elevcontour(Rivers);
+#system "./charts/gen_resource_usage.sh Q7P6";
+

@@ -1,0 +1,12 @@
+clean;
+
+set histogram grid;
+
+load 'shapes/Railroads.shp' as d1 simulate;
+load 'shapes/elevcontour.shp' as d2 simulate;
+
+plan from d1 hj join d2(d1);
+
+
+
+

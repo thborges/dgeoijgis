@@ -1,0 +1,30 @@
+clean;
+
+load 'shapes/hydroinland.shp' as hydroinland;
+load 'shapes/municipios.shp' as municipios;
+load 'shapes/Crops.shp' as Crops;
+load 'shapes/alertas.shp' as alertas;
+
+select from hydroinland hj join municipios(hydroinland) hj join Crops(hydroinland) hj join alertas(hydroinland);
+system "./charts/gen_resource_usage.sh Q8P1";
+
+cleani;
+select from hydroinland hj join Crops(hydroinland) hj join municipios(hydroinland) hj join alertas(hydroinland);
+system "./charts/gen_resource_usage.sh Q8P2";
+
+cleani;
+select from hydroinland hj join Crops(hydroinland) hj join alertas(hydroinland) hj join municipios(hydroinland);
+system "./charts/gen_resource_usage.sh Q8P3";
+
+cleani;
+select from alertas hj join hydroinland(alertas) hj join Crops(hydroinland) hj join municipios(hydroinland);
+system "./charts/gen_resource_usage.sh Q8P4";
+
+cleani;
+select from alertas hj join hydroinland(alertas) hj join municipios(hydroinland) hj join Crops(hydroinland);
+system "./charts/gen_resource_usage.sh Q8P5";
+
+cleani;
+select from municipios hj join hydroinland(municipios) hj join alertas(hydroinland) hj join Crops(hydroinland);
+system "./charts/gen_resource_usage.sh Q8P6";
+

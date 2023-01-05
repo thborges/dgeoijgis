@@ -1,0 +1,6 @@
+clean;
+
+load 'shapes/Railroads.shp' as Railroads;
+load 'shapes/Rivers.shp' as Rivers;
+
+select from Railroads hj join Rivers(Railroads);

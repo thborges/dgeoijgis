@@ -1,0 +1,9 @@
+clean;
+
+load 'shapes/hydroinland.shp' as hydroinland simulate servers 4;
+load 'shapes/municipios.shp' as municipios simulate servers 4;
+load 'shapes/Crops.shp' as Crops simulate servers 4;
+load 'shapes/alertas.shp' as alertas simulate servers 4;
+
+plan from alertas hj join hydroinland(alertas) hj join Crops(hydroinland) hj join municipios(hydroinland);
+

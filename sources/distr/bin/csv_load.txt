@@ -1,0 +1,7 @@
+clean;
+
+load 'shapes/arealm.csv' as arealm;
+load 'shapes/proads.csv' as proads;
+load 'shapes/ca_roads.csv' as caroads;
+
+store m7;

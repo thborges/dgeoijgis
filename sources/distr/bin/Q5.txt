@@ -1,0 +1,16 @@
+clean;
+
+set histogram grid;
+
+load 'shapes/alertas.shp' as alertas;
+load 'shapes/municipios.shp' as municipios;
+load 'shapes/vegeta.shp' as vegeta;
+
+select from alertas hj join municipios(alertas) hj join vegeta(alertas);
+system "./charts/gen_resource_usage.sh Q5P1";
+
+#cleani;
+#select from alertas hj join vegeta(alertas) hj join municipios(alertas);
+#system "./charts/gen_resource_usage.sh Q5P2";
+
+

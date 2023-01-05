@@ -1,0 +1,16 @@
+#!/bin/bash
+
+autoreconf --install
+
+GO="-fPIC -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fno-common"
+
+COM="-O3 -ffast-math -march=native"
+#COM_DBG="-ggdb -O0 -fno-omit-frame-pointer"
+
+cp distr/Makefile.bkp distr/Makefile
+
+PKG_CONFIG_PATH="/usr/local/lib" \
+CFLAGS="$COM $COM_DBG -std=c11 " \
+CXXFLAGS="$COM $COM_DBG -std=c++11" \
+LDFLAGS="-L/usr/local/lib" \
+./configure V=1 --enable-library --with-snmp=no --with-cplex=yes && make clean && make -j2

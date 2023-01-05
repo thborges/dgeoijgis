@@ -1,0 +1,6 @@
+clean;
+
+load 'shapes/hidrografia.shp' as hidrografia;
+load 'shapes/rodovia.shp' as rodovia;
+
+select from hidrografia hj join rodovia(hidrografia);

@@ -1,0 +1,14 @@
+clean;
+
+load 'shapes/Rivers.shp' as rivers;
+load 'shapes/Railroads.shp' as railroads;
+load 'shapes/elevcontour.shp' as elevcontour;
+
+#melhor
+select from rivers hj join railroads(rivers) hj join elevcontour(rivers);
+system "./charts/gen_resource_usage.sh Q3P1";
+
+cleani;
+select from rivers hj join elevcontour(rivers) hj join railroads(rivers);
+system "./charts/gen_resource_usage.sh Q3P2";
+

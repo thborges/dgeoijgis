@@ -1,0 +1,30 @@
+clean;
+
+load 'shapes/Rivers.shp' as Rivers;
+load 'shapes/Railroads.shp' as Railroads;
+load 'shapes/Crops.shp' as Crops;
+load 'shapes/alertas.shp' as alertas;
+
+select from Rivers hj join Railroads(Rivers) hj join Crops(Rivers) hj join alertas(Rivers);
+system "./charts/gen_resource_usage.sh Q2P1";
+
+cleani;
+select from Rivers hj join Crops(Rivers) hj join Railroads(alerta) hj join alertas(Rivers);
+system "./charts/gen_resource_usage.sh Q2P2";
+
+cleani;
+select from Rivers hj join Crops(Rivers) hj join alertas(Rivers) hj join Railroads(Rivers);
+system "./charts/gen_resource_usage.sh Q2P3";
+
+cleani;
+select from alertas hj join Rivers(alertas) hj join Crops(Rivers) hj join Railroads(Rivers);
+system "./charts/gen_resource_usage.sh Q2P4";
+
+cleani;
+select from alertas hj join Rivers(alertas) hj join Railroads(Rivers) hj join Crops(Rivers);
+system "./charts/gen_resource_usage.sh Q2P5";
+
+cleani;
+select from Railroads hj join Rivers(Railroads) hj join alertas(Rivers) hj join Crops(Rivers);
+system "./charts/gen_resource_usage.sh Q2P6";
+

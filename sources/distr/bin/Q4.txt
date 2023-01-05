@@ -1,0 +1,13 @@
+clean;
+
+load 'shapes/Rivers.shp' as rivers;
+load 'shapes/Railroads.shp' as railroads;
+load 'shapes/hydroinland.shp' as hydroinland;
+
+select from rivers hj join railroads(rivers) hj join hydroinland(rivers);
+system "./charts/gen_resource_usage.sh Q4P1";
+
+cleani;
+select from rivers hj join hydroinland(rivers) hj join railroads(rivers);
+system "./charts/gen_resource_usage.sh Q4P2";
+

@@ -1,0 +1,8 @@
+clean;
+
+load 'shapes/alertas.shp' as alertas;
+load 'shapes/municipios.shp' as muni;
+load 'shapes/hidrografia.shp' as hidro;
+
+select from alertas hj join muni(alertas) hj join hidro(muni);
+

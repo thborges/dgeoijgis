@@ -1,0 +1,9 @@
+clean;
+
+load 'shapes/Rivers.shp' as Rivers simulate servers 4;
+load 'shapes/Railroads.shp' as Railroads simulate servers 4;
+load 'shapes/Crops.shp' as Crops simulate servers 4;
+load 'shapes/alertas.shp' as alertas simulate servers 4;
+
+plan from alertas hj join Rivers(alertas) hj join Railroads(Rivers) hj join Crops(Rivers);
+

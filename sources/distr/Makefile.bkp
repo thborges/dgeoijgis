@@ -1,0 +1,36 @@
+VER = $(shell uname -snrm)
+DATE = $(shell date "+%Y-%m-%d %H:%M:%S")
+
+all: version
+	export GOPATH=`pwd`; cd src; CC=clang CGO_CFLAGS="-Ofast -D_GNU_SOURCE -ffast-math -march=native" go install -ldflags=-w -v ...
+
+mac: version
+	export GOPATH=`pwd`; cd src; CC=clang CGO_CFLAGS="-Ofast -D_GNU_SOURCE -ffast-math -march=native" go install -ldflags -s -v ...
+
+debugmac: version
+	make clean
+	export GOPATH=`pwd`; cd src; CC=clang CGO_CFLAGS="-rdynamic -O0 -ggdb -D_GNU_SOURCE" go install -work -gcflags=all="-N -l" -v ...
+
+debug: version
+	make clean
+	export GOFLAGS="-ldflags=-compressdwarf=false"; \
+	export GOPATH=`pwd`; \
+	cd src; \
+	CC=clang CGO_LDFLAGS="-ggdb -O0" CGO_CFLAGS="-ggdb -O0 -D_GNU_SOURCE" go install -work -gcflags=all="-N -l" -v ...
+
+debugsan: version
+	make clean
+	export GOFLAGS="-ldflags=-compressdwarf=false"; \
+	export GOPATH=`pwd`; \
+	cd src; \
+	CC=clang CGO_LDFLAGS="-ggdb -O0 -fsanitize=address" CGO_CFLAGS="-ggdb -O0 -D_GNU_SOURCE -fsanitize=address" go install -work -gcflags=all="-N -l" -v ...
+
+clean:
+	rm -f bin/dgeo
+	rm -f bin/cclient
+	rm -f pkg/**/peer.a
+
+version:
+	@echo 'package peer;\n\nconst APP_VERSION="${VER} ${DATE}";\n' > src/peer/version.go
+
+

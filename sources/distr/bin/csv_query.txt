@@ -1,0 +1,4 @@
+select from arealm
+hj join proads(arealm)
+hj join caroads(proads);
+

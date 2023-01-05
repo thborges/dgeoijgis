@@ -1,0 +1,14 @@
+#!/bin/bash
+
+CC=clang
+CXX=clang++
+
+autoreconf --install
+
+COM="-Ofast -ffast-math -march=native -D_GNU_SOURCE"
+#COMDBG="-O0 -ggdb"
+#COMDBG="-O0 -g -fsanitize=leak -fno-omit-frame-pointer"
+
+LDFLAGS="-pg" CFLAGS="-std=c11 $COM $COMDBG" \
+CXXFLAGS="-std=c++1y $COM $COMDBG" \
+./configure --with-cplex=yes && make clean && make -j 4

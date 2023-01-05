@@ -1,0 +1,10 @@
+clean;
+
+set histogram grid;
+
+load 'shapes/Rivers.shp' as d1 simulate;
+load 'shapes/Crops.shp' as d2 simulate;
+
+plan from d1 hj join d2(d1);
+
+

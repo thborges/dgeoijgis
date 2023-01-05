@@ -1,0 +1,25 @@
+#!/bin/bash
+# Clean up the left-overs
+for i in \
+    autom4te.cache \
+    aclocal.m4 \
+    config.log \
+    config.status \
+    config.guess \
+	config.h \
+	config.h.in \
+    configure \
+    config.sub \
+    Makefile \
+    Makefile.in \
+    install-sh \
+    missing \
+	stamp-h1 \
+	.deps \
+	.dirstamp \
+	'*.o' \
+	'*.a' \
+    '*.pc' \
+    '*.pc.in' ; do
+  find ./ -name $i -exec rm -rf \{\} \;
+done

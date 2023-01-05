@@ -1,0 +1,10 @@
+clean;
+
+load 'shapes/Rivers.shp' as Rivers simulate servers 4;
+load 'shapes/Railroads.shp' as Railroads simulate servers 4;
+load 'shapes/elevcontour.shp' as elevcontour simulate servers 4;
+load 'shapes/rodovia.shp' as rodovia simulate servers 4;
+
+plan from rodovia hj join Rivers(rodovia) hj join Railroads(Rivers) hj join elevcontour(Rivers);
+
+

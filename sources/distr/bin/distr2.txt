@@ -1,0 +1,6 @@
+clean;
+
+load 'shapes/hidrografia.shp' as hidrografia;
+load 'shapes/alertas.shp' as alertas;
+
+select from hidrografia hj join alertas(hidrografia);

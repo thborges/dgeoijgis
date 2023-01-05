@@ -1,0 +1,9 @@
+clean;
+
+load 'shapes/alertas.shp' as alertas simulate;
+load 'shapes/municipios.shp' as municipios simulate;
+load 'shapes/vegeta.shp' as vegeta simulate;
+
+plan from alertas hj join vegeta(alertas) hj join municipios(alertas);
+
+

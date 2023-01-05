@@ -1,0 +1,10 @@
+clean;
+
+load 'shapes/Rivers.shp' as Rivers;
+load 'shapes/Railroads.shp' as Railroads;
+load 'shapes/Crops.shp' as Crops;
+load 'shapes/alertas.shp' as alertas;
+
+plan from Rivers hj join Railroads(Rivers) hj join Crops(Rivers) hj join
+alertas(Crops);
+

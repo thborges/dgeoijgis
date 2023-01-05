@@ -1,0 +1,6 @@
+clean;
+
+load 'shapes/alertas.shp' as alertas;
+load 'shapes/vegeta.shp' as vegeta;
+
+plan from alertas hj join vegeta(alertas);

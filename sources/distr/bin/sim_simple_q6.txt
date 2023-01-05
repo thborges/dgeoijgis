@@ -1,0 +1,10 @@
+clean;
+
+load 'shapes/alertas.shp' as alertas simulate servers 4;
+load 'shapes/porto.shp' as porto simulate servers 4;
+load 'shapes/municipios.shp' as municipios simulate servers 4;
+load 'shapes/vegeta.shp' as vegeta simulate servers 4;
+
+plan from alertas hj join porto(alertas) hj join municipios(alertas) hj join vegeta(alertas);
+
+

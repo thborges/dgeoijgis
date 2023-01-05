@@ -1,0 +1,15 @@
+clean;
+
+set histogram grid;
+
+load 'shapes/Rivers.shp' as rivers;
+load 'shapes/Railroads.shp' as railroads;
+load 'shapes/Crops.shp' as crops;
+
+select from rivers hj join railroads(rivers) hj join crops(rivers);
+system "./charts/gen_resource_usage.sh Q1P1";
+
+#cleani;
+#select from rivers hj join crops(rivers) hj join railroads(rivers);
+#system "./charts/gen_resource_usage.sh Q1P2";
+
